@@ -1,0 +1,6 @@
+{
+  "cooking": [
+    { "id": 1, "name": "steamed" },
+    { "id": 2, "name": "fried" },
+    { "id": 3, "name": "sauteed" }
+}

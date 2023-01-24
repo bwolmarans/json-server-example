@@ -1,0 +1,9 @@
+{
+  "warehouse": [
+    { "id": 1, "name": "Atlanta" },
+    { "id": 2, "name": "Secaucus" },
+    { "id": 3, "name": "Plano" },
+    { "id": 4, "name": "Long_Beach" },
+    { "id": 5, "name": "Tacoma" },
+    { "id": 6, "name": "Memphis" }
+}

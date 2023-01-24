@@ -1,0 +1,18 @@
+{
+  "ingredient": [
+    { "id": 1, "name": "tofu" },
+    { "id": 2, "name": "shoyu" },
+    { "id": 3, "name": "green_onion" },
+    { "id": 4, "name": "bok_choy" },
+    { "id": 5, "name": "tempeh" },
+    { "id": 6, "name": "broccoli" },
+    { "id": 8, "name": "brown_rice" },
+    { "id": 9, "name": "rice_vinegar" },
+    { "id": 10, "name": "hoisin_sauce" },
+    { "id": 11, "name": "rice_noodles" },
+    { "id": 12, "name": "carrots" },
+    { "id": 13, "name": "red_peppers" },
+    { "id": 14, "name": "green_peppers" },
+    { "id": 15, "name": "yellow_peppers" }
+    { "id": 16, "name": "lime_juice" }
+}
