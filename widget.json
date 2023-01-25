@@ -1,0 +1,9 @@
+{
+  "widget": [
+    { "id": 1, "name": "nuts" },
+    { "id": 2, "name": "bolts" },
+    { "id": 3, "name": "brackets" },
+    { "id": 4, "name": "hinges" },
+    { "id": 5, "name": "springs" }
+  ]
+}
