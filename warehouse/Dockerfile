@@ -1,6 +1,6 @@
 FROM node:alpine as build-deps
 WORKDIR /usr/src/app
-COPY package*.json db.json ./
+COPY package*.json warehouse.json ./
 RUN npm install -g json-server
 COPY . ./
 #RUN npm run build

@@ -1,0 +1,25 @@
+ubuntu@ip-172-31-50-102:~/json-server-example$ cat widgets-app-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: widgets-app-deployment
+  labels:
+    app: widgets-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: widgets-app
+  template:
+    metadata:
+      labels:
+        app: widgets-app
+    spec:
+      nodeSelector:
+        type: backend
+      containers:
+        - name: widgets-service
+          image: widgets-service:v1.0
+          ports:
+            - containerPort: 8080
+( all the other containers need to go here, including the widgets-app-frontend )
