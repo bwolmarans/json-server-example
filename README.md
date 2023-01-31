@@ -10,6 +10,9 @@ widgets-api-warehouse           latest    4606f1198651   2 weeks ago     187MB
 widgets-api-quantity            latest    43150bba90a3   2 weeks ago     187MB
 widgets-api-widgets             latest    4cefd4983d28   2 weeks ago     187MB
 
+docker run -idp 3000:80 widgets-api-warehouse
+docker run -idp 3001:80 widgets-api-blah
+docker run -idp 3002:80 widgets-api-blah
 
 ubuntu@ip-172-31-52-46:~/src/widgets-api/quantity$ docker ps
 CONTAINER ID   IMAGE          COMMAND                  CREATED             STATUS             PORTS                                   NAMES
