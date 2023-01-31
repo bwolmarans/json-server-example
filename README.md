@@ -1,3 +1,4 @@
+```
 docker build -t widgets-api-quantity .
 
 etc..
@@ -31,3 +32,4 @@ ubuntu@ip-172-31-52-46:~/src/widgets-api$ python3 client.py
   "id": 3,
   "name": "Plano"
 }
+```
