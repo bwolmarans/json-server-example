@@ -51,7 +51,7 @@ spec:
             - containerPort: 8080
           env:
             - name: PREFIX
-              value: "frontend"
+              value: "widgets"
             - name: NAMESPACE
               value: "api"
           resources:
@@ -78,18 +78,18 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: widgets-widgets
+  name: widgets-widget
 spec:
   selector:
     matchLabels:
-      app: widgets-widgets
+      app: widgets-widget
   template:
     metadata:
       labels:
-        app: widgets-widgets
+        app: widgets-widget
     spec:
       containers:
-        - name: widgets-widgets
+        - name: widgets-widget
           image: bwolmarans/widgets-widget:v1.0
           imagePullPolicy: Always
           ports:
@@ -110,11 +110,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: widgets-widgets
+  name: widgets-widget
 spec:
   type: ClusterIP
   selector:
-    app: widgets-widgets
+    app: widgets-widget
   ports:
     - name: http
       port: 3000
