@@ -18,23 +18,22 @@ class S(BaseHTTPRequestHandler):
         self._set_response()
 
         i = randint(1, 5)
-        r =requests.get('http://widgets-widget:3000/widget/' + str(i))
+        r =requests.get('http://127.0.0.1:3000/widget/' + str(i))
         wgt = r.text
         #print(t)
 
         i = randint(1, 5)
-        r =requests.get('http://widgets-quantity:3001/quantity/' + str(i))
+        r =requests.get('http://127.0.0.1:3001/quantity/' + str(i))
         qty = r.text
         #print(t)
 
         i = randint(1, 5)
-        r =requests.get('http://widgets-warehouse:3002/warehouse/' + str(i))
+        r =requests.get('http://127.0.0.1:3002/warehouse/' + str(i))
         whs = r.text
         #print(t)
         #self.wfile.write("GET request for {}".format(self.path).encode('utf-8'))
         x = "Thank you for checking the Widgets inventory. Happy Selling! \n" + str(wgt) + "\n" + str(qty) + "\n " + str(whs) + "\n"
         self.wfile.write(x.encode('utf-8'))
-        #self.wfile.write("Thank you for checking the Widgets inventory. Happy Selling! " + wgt + " " + qty + " " + whs + " ".encode('utf-8'))
 
     def do_POST(self):
         content_length = int(self.headers['Content-Length']) # <--- Gets the size of data
@@ -45,7 +44,7 @@ class S(BaseHTTPRequestHandler):
         self._set_response()
         self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
 
-def run(server_class=HTTPServer, handler_class=S, port=80):
+def run(server_class=HTTPServer, handler_class=S, port=8080):
     logging.basicConfig(level=logging.INFO)
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
