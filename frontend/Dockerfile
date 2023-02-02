@@ -10,4 +10,4 @@ RUN apt-get -qq -y install net-tools
 
 COPY . .
 
-CMD [ "python3", "widgets-app-frontend.py"]
+CMD [ "python3", "widgets-app-frontend.py", "8080"]

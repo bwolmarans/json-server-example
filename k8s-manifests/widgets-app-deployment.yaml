@@ -67,12 +67,12 @@ kind: Service
 metadata:
   name: widgets-frontend
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: widgets-frontend
   ports:
     - name: http
-      port: 80
+      port: 8080
       targetPort: 8080
 ---
 apiVersion: apps/v1
