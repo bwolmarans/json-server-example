@@ -1,4 +1,13 @@
 ```
+wolmarans@86P93D3:~$ h ecr
+ 3745  aws ecr get-login-password --region us-west-2
+ 3746  aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 645783638046.dkr.ecr.us-west-2.amazonaws.com
+ 3747  docker tag json_server_example:latest 645783638046.dkr.ecr.us-west-2.amazonaws.com/json_server_example:latest
+ 3755  docker tag json_server_example:latest 645783638046.dkr.ecr.us-west-2.amazonaws.com/json_server_example:latest
+ 3756  docker push 645783638046.dkr.ecr.us-west-2.amazonaws.com/json_server_example:latest
+ 3835  docker push 645783638046.dkr.ecr.us-west-2.amazonaws.com/json_server_example:latest
+ 4055  history | grep ecr
+
 docker build -t widgets-api-quantity .
 
 etc..

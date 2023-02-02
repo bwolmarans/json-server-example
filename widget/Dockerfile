@@ -2,6 +2,9 @@ FROM node:alpine as build-deps
 WORKDIR /usr/src/app
 COPY package*.json widget.json ./
 RUN npm install -g json-server
+RUN apk --no-cache add curl
+RUN apk --no-cache add net-tools
+RUN apk --no-cache add vim
 COPY . ./
 #RUN npm run build
 EXPOSE 80

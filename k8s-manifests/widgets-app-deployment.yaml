@@ -1,25 +1,212 @@
-ubuntu@ip-172-31-50-102:~/json-server-example$ cat widgets-app-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: widgets-app-deployment
-  labels:
-    app: widgets-app
+  name: widgets-debugger
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: widgets-app
+      app: widgets-debugger
   template:
     metadata:
       labels:
-        app: widgets-app
+        app: widgets-debugger
     spec:
-      nodeSelector:
-        type: backend
       containers:
-        - name: widgets-service
-          image: widgets-service:v1.0
+        - name: widgets-debugger
+          image: bwolmarans/widgets-debugger:v1.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
-( all the other containers need to go here, including the widgets-app-frontend )
+          env:
+            - name: PREFIX
+              value: "frontend"
+            - name: NAMESPACE
+              value: "api"
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "10m"
+            limits:
+              memory: "64Mi"
+              cpu: "25m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: widgets-frontend
+spec:
+  selector:
+    matchLabels:
+      app: widgets-frontend
+  template:
+    metadata:
+      labels:
+        app: widgets-frontend
+    spec:
+      containers:
+        - name: widgets-frontend
+          image: bwolmarans/widgets-frontend:v1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PREFIX
+              value: "frontend"
+            - name: NAMESPACE
+              value: "api"
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "10m"
+            limits:
+              memory: "64Mi"
+              cpu: "25m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: widgets-frontend
+spec:
+  type: ClusterIP
+  selector:
+    app: widgets-frontend
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: widgets-widgets
+spec:
+  selector:
+    matchLabels:
+      app: widgets-widgets
+  template:
+    metadata:
+      labels:
+        app: widgets-widgets
+    spec:
+      containers:
+        - name: widgets-widgets
+          image: bwolmarans/widgets-widget:v1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: PREFIX
+              value: "widgets"
+            - name: NAMESPACE
+              value: "api"
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "10m"
+            limits:
+              memory: "64Mi"
+              cpu: "25m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: widgets-widgets
+spec:
+  type: ClusterIP
+  selector:
+    app: widgets-widgets
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: widgets-quantity
+spec:
+  selector:
+    matchLabels:
+      app: widgets-quantity
+  template:
+    metadata:
+      labels:
+        app: widgets-quantity
+    spec:
+      containers:
+        - name: widgets-quantity
+          image: bwolmarans/widgets-quantity:v1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: PREFIX
+              value: "widgets"
+            - name: NAMESPACE
+              value: "api"
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "10m"
+            limits:
+              memory: "64Mi"
+              cpu: "25m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: widgets-quantity
+spec:
+  type: ClusterIP
+  selector:
+    app: widgets-quantity
+  ports:
+    - name: http
+      port: 3001
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: widgets-warehouse
+spec:
+  selector:
+    matchLabels:
+      app: widgets-warehouse
+  template:
+    metadata:
+      labels:
+        app: widgets-warehouse
+    spec:
+      containers:
+        - name: widgets-warehouse
+          image: bwolmarans/widgets-warehouse:v1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: PREFIX
+              value: "widgets"
+            - name: NAMESPACE
+              value: "api"
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "10m"
+            limits:
+              memory: "64Mi"
+              cpu: "25m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: widgets-warehouse
+spec:
+  type: ClusterIP
+  selector:
+    app: widgets-warehouse
+  ports:
+    - name: http
+      port: 3002
+      targetPort: 80
+---
